@@ -1,7 +1,7 @@
 pipeline {
   agent {
     node {
-      label 'nodejs-build'
+      label 'build-2'
     }
 
   }

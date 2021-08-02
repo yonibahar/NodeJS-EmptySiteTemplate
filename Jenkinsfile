@@ -47,7 +47,8 @@ pipeline {
 
     stage('notify slack') {
       steps {
-        slackSend(channel: 'devops_kamatech')
+        slackSend(channel: 'devops_kamatech', color: '#FF0000', message: "Success: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+)
       }
     }
 

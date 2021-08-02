@@ -26,7 +26,7 @@ pipeline {
 
     stage('test the app ') {
       steps {
-        sh '''sleep 10 && curl localhost:8080
+        sh '''sleep 5 && curl localhost:8080
 '''
       }
     }
@@ -47,7 +47,7 @@ pipeline {
 
     stage('notify slack') {
       steps {
-        slackSend(channel: 'devops_kamatech', color: '#FF0000', message: "Success: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+        slackSend(channel: 'devops_kamatech', color: '#3EA652', message: "Success: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
       }
     }
 

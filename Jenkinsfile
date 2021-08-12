@@ -9,7 +9,6 @@ pipeline {
     stage('Check Out Code') {
       steps {
         git(url: 'https://github.com/yonibahar/NodeJS-EmptySiteTemplate.git', branch: 'master', changelog: true, poll: true)
-        cleanWs(cleanWhenAborted: true, cleanWhenFailure: true, cleanWhenSuccess: true)
       }
     }
 
@@ -33,7 +32,13 @@ fi'''
 
     stage('Package Code') {
       steps {
-        sh 'tar -czvf node.tar.gz .'
+        sh 'tar -czvf node.tar.gz *'
+      }
+    }
+
+    stage('Publish The Archive') {
+      steps {
+        archiveArtifacts 'node.tar.gz'
       }
     }
 

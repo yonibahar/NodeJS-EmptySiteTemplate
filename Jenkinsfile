@@ -24,7 +24,7 @@ pipeline {
 sleep 5 &&
 curl localhost:8080
 if [[ "x$?" == "x0" ]];
-then    echo good;
+then echo good;
 else exit 1;
 fi'''
       }

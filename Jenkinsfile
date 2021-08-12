@@ -9,7 +9,7 @@ pipeline {
 
     stage('Build & Compile') {
       steps {
-        sh 'nvm install'
+        sh 'npm install'
       }
     }
 

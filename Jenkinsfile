@@ -39,6 +39,7 @@ fi'''
     stage('Publish The Archive') {
       steps {
         archiveArtifacts 'node.tar.gz'
+        cleanWs(cleanWhenAborted: true, cleanWhenFailure: true, cleanWhenNotBuilt: true, cleanWhenSuccess: true, cleanWhenUnstable: true)
       }
     }
 

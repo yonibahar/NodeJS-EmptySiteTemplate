@@ -9,6 +9,7 @@ pipeline {
     stage('Check Out Code') {
       steps {
         git(url: 'https://github.com/yonibahar/NodeJS-EmptySiteTemplate.git', branch: 'master', changelog: true, poll: true)
+        cleanWs(cleanWhenAborted: true, cleanWhenFailure: true, cleanWhenSuccess: true)
       }
     }
 
@@ -27,6 +28,12 @@ if [[ "x$?" == "x0" ]];
 then echo good;
 else exit 1;
 fi'''
+      }
+    }
+
+    stage('Package Code') {
+      steps {
+        sh 'tar -czvf node.tar.gz .'
       }
     }
 

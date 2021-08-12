@@ -31,8 +31,19 @@ fi'''
     }
 
     stage('Package Code') {
-      steps {
-        sh 'tar -czvf node.tar.gz *'
+      parallel {
+        stage('Package Code') {
+          steps {
+            sh 'tar -czvf node.tar.gz *'
+          }
+        }
+
+        stage('Clean Workspace') {
+          steps {
+            cleanWs(cleanWhenAborted: true, cleanWhenFailure: true, cleanWhenNotBuilt: true, cleanWhenSuccess: true, cleanWhenUnstable: true)
+          }
+        }
+
       }
     }
 
